@@ -20,14 +20,19 @@ class GoogleAuth extends React.Component {
   }
 
   onSignInClick = () => {
+    // coming from gapi
     this.auth.signIn();
   };
   onSignOutClick = () => {
+    // coming from gapi
     this.auth.signOut();
   };
 
   onAuthChange = isSignedIn => {
+    // isSignedIn is a bolean coming from the gapi.auth2.getAuthInstance() and it is  passrd to this onAuthChange fucntion
     if (isSignedIn) {
+      //this.auth.currentUser.get().getId() is coming from the gapi of google
+      // To get the sign in user ID
       this.props.signIn(this.auth.currentUser.get().getId());
     } else {
       this.props.signOut();
